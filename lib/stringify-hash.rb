@@ -1,3 +1,4 @@
+require 'stringify-hash/version'
 # A hash that treats Symbol and String keys interchangeably
 # and recursively merges hashes
 class StringifyHash < Hash

@@ -1,12 +1,12 @@
 # -*- encoding: utf-8 -*-
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
-require 'version'
+require 'stringify-hash/version'
 
 Gem::Specification.new do |s|
   s.name        = "stringify-hash"
-  s.version     = Version::STRING
+  s.version     = StringifyHash::Version::STRING
   s.authors     = ["Puppetlabs", "anode"]
-  s.email       = ["qe-team@puppetlabs.com"]
+  s.email       = ["qe-team@puppetlabs.com", 'alice@puppetlabs.com']
   s.homepage    = "https://github.com/puppetlabs/stringify-hash"
   s.summary     = %q{A Ruby Hash that treats symbols and strings interchangeably!}
   s.description = %q{:test == "test"}
