@@ -83,12 +83,12 @@ class StringifyHash < Hash
   #
   # @return [StringifyHash] The combined bash and hash
   def rmerge base, hash
-    return base unless hash.is_a?(Hash) || hash.is_a?(StringifyHash)
+    return base unless hash.is_a?(Hash) || hash.is_a?(self.class)
     hash.each do |key, v|
-      if (base[key].is_a?(Hash) || base[key].is_a?(StringifyHash)) && (hash[key].is_a?(Hash) || hash[key].is_a?(OptionsHash))
+      if (base[key].is_a?(Hash) || base[key].is_a?(self.class)) && (hash[key].is_a?(Hash) || hash[key].is_a?(self.class))
         rmerge(base[key], hash[key])
       elsif hash[key].is_a?(Hash)
-        base[key] = StringifyHash.new.merge(hash[key])
+        base[key] = self.class.new.merge(hash[key])
       else
         base[key]= hash[key]
       end
@@ -112,7 +112,7 @@ class StringifyHash < Hash
   # @return [StringifyHash] The combined hash
   def merge hash
     #make a deep copy into an empty hash object
-    merged_hash = rmerge(StringifyHash.new, self)
+    merged_hash = rmerge(self.class.new, self)
     rmerge(merged_hash, hash)
   end
 
